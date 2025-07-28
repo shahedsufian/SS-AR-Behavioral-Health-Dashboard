@@ -101,7 +101,7 @@ proc sql;
   	where value_set_name = "Hospice Encounter" and code_system = "UBREV";
 quit;
 
-libname geo xlsx "R:\Geographic info\zip_to_zcta_xwalk.xlsx";
+libname geo xlsx "";
 proc sql;
 select distinct quote(strip(zip_code)) into :AR_zips separated by "," 
 from geo.zips;
@@ -110,7 +110,7 @@ quit;
 proc contents data=geo._all_;
 run;
 
-libname hosp 'R:\Geographic Info\Hospital XWALK.xlsx';
+libname hosp '';
 data hosp_xwalk;
 set hosp.'Hospitals_simple$'n;
 run;
